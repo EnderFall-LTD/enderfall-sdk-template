@@ -15,6 +15,11 @@ Minecraft/loader target. No loader metadata or bootstrap classes are maintained 
 3. Build every selected target with `.\gradlew.bat buildAll`.
 4. Find the target JARs in `build/releases`.
 
+Launch the configured development target with `.\gradlew.bat runClient` or
+`.\gradlew.bat runServer`. Select another configured target with, for example,
+`.\gradlew.bat runServer '-Penderfall.target=1.20.1-forge'`. Generate portable recipes,
+tags, translations, loot, block states, and models with `.\gradlew.bat generateData`.
+
 On Linux or macOS, use `./gradlew` instead. Edit `settings.gradle.kts` to change targets.
 Portable code belongs in `src/main`; native escape hatches live under `src/loader`,
 `src/version`, or `src/target` and are not covered by the portability guarantee.

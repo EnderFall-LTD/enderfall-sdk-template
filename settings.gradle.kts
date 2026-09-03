@@ -47,6 +47,8 @@ enderfallSdk {
     }
 
     targets {
+        version("1.20.1") { loaders("fabric", "forge", "neoforge") }
+        version("1.21.1") { loaders("fabric", "neoforge") }
         version("1.21.4") { loaders("fabric", "neoforge") }
         version("26.2") { loaders("fabric", "neoforge") }
     }
