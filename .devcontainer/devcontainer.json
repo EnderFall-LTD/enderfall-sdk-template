@@ -1,0 +1,15 @@
+{
+  "name": "EnderFall SDK Mod",
+  "image": "mcr.microsoft.com/devcontainers/java:25-bookworm",
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {}
+  },
+  "postCreateCommand": "./gradlew enderfallDoctor",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "vscjava.vscode-java-pack"
+      ]
+    }
+  }
+}

@@ -1,0 +1,42 @@
+name: build
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          path: enderfall-sdk-template
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          repository: EnderFall/enderfall-sdk
+          path: enderfall-sdk
+      - uses: actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3 # v4
+        with:
+          distribution: temurin
+          java-version: "25"
+      - uses: gradle/actions/setup-gradle@ed408507eac070d1f99cc633dbcf757c94c7933a # v4
+      - name: Prepare source-development repository
+        run: ./gradlew publishWorkspace
+        working-directory: enderfall-sdk
+        if: runner.os != 'Windows'
+      - name: Prepare source-development repository on Windows
+        run: .\gradlew.bat publishWorkspace
+        working-directory: enderfall-sdk
+        if: runner.os == 'Windows'
+      - run: ./gradlew buildAll
+        working-directory: enderfall-sdk-template
+        if: runner.os != 'Windows'
+      - run: .\gradlew.bat buildAll
+        working-directory: enderfall-sdk-template
+        if: runner.os == 'Windows'
