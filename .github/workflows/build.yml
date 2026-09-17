@@ -19,7 +19,7 @@ jobs:
           path: enderfall-sdk-template
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
-          repository: EnderFall/enderfall-sdk
+          repository: EnderFall-LTD/enderfall-sdk
           path: enderfall-sdk
       - uses: actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3 # v4
         with:
